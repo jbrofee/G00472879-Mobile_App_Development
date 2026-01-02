@@ -7,6 +7,7 @@
 
   <div id="container">
     <p>What ingredients are we working with?</p>
-    <ion-input fill="solid"></ion-input>
+    <ion-input fill="solid" [(ngModel)]="ingredients" placeholder="e.g. garlic, chicken" (keyup.enter)="searchRecipes()" )=""></ion-input>
+    <ion-button expand="block" (click)="searchRecipes()">Search Recipes</ion-button>
   </div>
 </ion-content>
