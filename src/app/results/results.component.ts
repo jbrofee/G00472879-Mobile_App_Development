@@ -1,14 +1,21 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {IngredientsSearch} from "../services/ingredients-search";
+import {HttpResponse} from "@capacitor/core";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
+  imports: [
+    NgForOf
+  ]
 })
 export class ResultsComponent  implements OnInit {
+  resultsList: any;
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private httpService: IngredientsSearch) { }
 
   ngOnInit(): void {
@@ -19,7 +26,7 @@ export class ResultsComponent  implements OnInit {
 
   ionViewWillEnter() {
     // Access navigation state immediately
-    const navigation = this.router.getCurrentNavigation();
+    const navigation = this.router.currentNavigation();
     const ingredients = navigation?.extras?.state?.['ingredients'] || [];
 
     // Alternative: check history state if navigation is null
@@ -31,7 +38,8 @@ export class ResultsComponent  implements OnInit {
   }
 
   async fetchRecipes(ingredients: string[]) {
-    const result = await this.httpService.searchFunction(ingredients);
-    console.log(result);
+    const response = await this.httpService.searchFunction(ingredients);
+    this.resultsList = response?.data;
+    console.log(this.resultsList);
   }
 }
