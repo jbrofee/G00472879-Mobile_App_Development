@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'favourites',
+    loadComponent: () => import('./favourites/favourites.component').then((m) => m.FavouritesComponent),
+  }
 ];
