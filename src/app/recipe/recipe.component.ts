@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
-import {IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonSpinner} from "@ionic/angular/standalone";
+import {
+  IonAccordion,
+  IonAccordionGroup,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonSpinner
+} from "@ionic/angular/standalone";
 import {Units} from "../services/units";
 import {NgFor, NgIf} from "@angular/common";
 
@@ -17,7 +25,8 @@ import {NgFor, NgIf} from "@angular/common";
     IonAccordionGroup,
     NgFor,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonList
   ]
 })
 export class RecipeComponent  implements OnInit {

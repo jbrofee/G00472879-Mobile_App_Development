@@ -1,11 +1,22 @@
 <!-- isLoading tracks whether or not the response has been received -->
 <ion-content *ngIf="!isLoading; else loading">
-  <div id="container">
+  <div id="container" class="ion-padding">
 
     <div>
       <h1>{{ recipeDetails.title }}</h1>
       <p>{{ unitPreference }}</p>
+
       <h3>Ingredients</h3>
+      <ion-list>
+        <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients">
+          <ion-label>
+            <!-- Shorthand check changes unit amount depending on user preference -->
+            {{ unitPreference === "Metric" ? ingredient.measures.metric.amount : ingredient.measures.us.amount }}
+            {{ unitPreference === 'Metric' ? ingredient.measures.metric.unitShort : ingredient.measures.us.unitShort }} -
+            {{ ingredient.name }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
 
       <h3>Instructions</h3>
       <ion-accordion-group>
