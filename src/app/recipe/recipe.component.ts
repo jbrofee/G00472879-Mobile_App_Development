@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IngredientsSearch } from '../services/ingredients-search';
 import { RecipeLookup } from '../services/recipe-lookup';
+import {IonContent} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss'],
+  imports: [
+    IonContent
+  ]
 })
 export class RecipeComponent  implements OnInit {
 
