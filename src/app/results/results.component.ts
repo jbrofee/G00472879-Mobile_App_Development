@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {IngredientsSearch} from "../services/ingredients-search";
 import {NgForOf} from "@angular/common";
-import {IonCard, IonCardHeader, IonCardTitle, IonContent} from "@ionic/angular/standalone";
+import {IonCard, IonCardHeader, IonCardTitle, IonContent, IonButton} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-results',
@@ -13,7 +13,8 @@ import {IonCard, IonCardHeader, IonCardTitle, IonContent} from "@ionic/angular/s
     IonCard,
     IonCardHeader,
     IonCardTitle,
-    IonContent
+    IonContent,
+    IonButton
   ]
 })
 export class ResultsComponent  implements OnInit {
@@ -22,9 +23,7 @@ export class ResultsComponent  implements OnInit {
   // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private httpService: IngredientsSearch) { }
 
-  ngOnInit(): void {
-        console.log("huh")
-    }
+  ngOnInit(){}
 
   private router = inject(Router);
 
