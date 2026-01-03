@@ -1,3 +1,12 @@
-<p>
-  favourites works!
-</p>
+<ion-content>
+  <h1>Favourites</h1>
+  <div id="results-container">
+    <ion-card *ngFor="let result of favouritesRecipeInfo">
+      <img alt="Recipe Image" [src]="result.image" />
+      <ion-card-header>
+        <ion-card-title>{{ result.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-button [href]="'/recipe/' + result.id">View Recipe</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

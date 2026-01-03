@@ -56,7 +56,7 @@ export class FavouritesService {
     return favourites.includes(id);
   }
 
-  async fetchFavouriteRecipeInfo(favourites: string[]): Promise<any[]> {
+  async fetchFavouriteRecipeInfo(favourites: string[]) {
     if (favourites.length === 0) {
       return [];
     }
