@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {IngredientsSearch} from "../services/ingredients-search";
-import {HttpResponse} from "@capacitor/core";
 import {NgForOf} from "@angular/common";
 import {IonCard, IonCardHeader, IonCardTitle, IonContent} from "@ionic/angular/standalone";
 
