@@ -1,3 +1,10 @@
-<p>
-  {{ currentPreference }}
-</p>
+<ion-content>
+  <div id="container">
+    <h1>Metric or Imperial?</h1>
+    <ion-radio-group [value]="currentPreference" (ionChange)="onPreferenceChange($event)">
+      <ion-radio value="Metric">Metric</ion-radio>
+      <ion-radio value="Imperial">Imperial</ion-radio>
+    </ion-radio-group>
+  </div>
+  <h1>Currently selected: {{currentPreference}}</h1>
+</ion-content>

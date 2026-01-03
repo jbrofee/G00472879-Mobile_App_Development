@@ -1,3 +1,10 @@
 <ion-content>
-  <h1>{{ recipeDetails.title }}</h1>
+  <!-- isLoading tracks whether or not the response has been received -->
+  <div *ngIf="!isLoading; else loading">
+    <h1>{{ recipeDetails.title }}</h1>
+  </div>
+  <ng-template #loading>
+    <p>Loading recipe...</p>
+  </ng-template>
+  <p>{{ unitPreference }}</p>
 </ion-content>

@@ -5,25 +5,34 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root',
 })
 export class Units {
+  private _storage: Storage | null = null;
+
   constructor(private storage: Storage) {
     this.init();
-  };
+  }
+
   private async init() {
-    const storage = await this.storage.create();
-    this.storage = storage;
+    this._storage = await this.storage.create();
   }
 
   async setUnitPreference(unit: 'Metric' | 'Imperial') {
-    await this.storage.set('unitPreference', unit ?? 'Metric');
+    console.log("pong")
+    if (!this._storage) {
+      await this.init();
+    }
+    await this._storage!.set('unitPreference', unit);
   }
 
   async getUnitPreferences(): Promise<'Metric' | 'Imperial'> {
-    const current = await this.storage.get('unitPreference');
+    if (!this._storage) {
+      await this.init();
+    }
+
+    const current = await this._storage!.get('unitPreference');
     if (current === 'Metric' || current === 'Imperial') {
       return current;
     }
-    // Default to metric if not set
-    await this.storage.set('unitPreference', 'Metric');
+    await this._storage!.set('unitPreference', 'Metric');
     return 'Metric';
   }
 }
