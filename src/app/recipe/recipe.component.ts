@@ -55,21 +55,18 @@ export class RecipeComponent  implements OnInit {
   ngOnInit() {}
 
   async ionViewWillEnter() {
+    this.isLoading = true;
     this.recipeId = this.route.snapshot.paramMap.get('id') || "";
     this.isFavourited = await this.favouriteService.isFavorited(this.recipeId);
-    this.fetchRecipeDetails(this.recipeId);
+    await this.fetchRecipeDetails(this.recipeId);
     this.fetchUnitPreference()
     this.isFavourited = await this.favouriteService.isFavorited(this.recipeId)
+    this.isLoading = false;
   }
 
   async fetchRecipeDetails(id: string) {
-    this.isLoading = true;
     const response = await this.httpService.recipeSearch(id);
     this.recipeDetails = response?.data;
-    this.isLoading = false;
-    console.log(id)
-    console.log(this.isFavourited)
-    console.log(this.recipeDetails);
   }
 
   async fetchUnitPreference() {
