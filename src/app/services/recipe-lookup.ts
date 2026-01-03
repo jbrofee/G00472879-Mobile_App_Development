@@ -8,6 +8,7 @@ export class RecipeLookup {
   constructor() {
   }
 
+  // Gets info on specific recipe
   async recipeSearch(id: string) {
     const options: HttpOptions = {
       url: `https://api.spoonacular.com/recipes/${id}/information`,
@@ -20,6 +21,7 @@ export class RecipeLookup {
     return await CapacitorHttp.get(options);
   }
 
+  // Takes in list of favourite IDs and gets their information in bulk
   async favouritesSearch(favourites: string[]) {
     const options: HttpOptions = {
       url: `https://api.spoonacular.com/recipes/informationBulk?ids=${favourites.join(',')}`,

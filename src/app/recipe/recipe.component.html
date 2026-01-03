@@ -28,6 +28,7 @@
           </ion-accordion-group>
         </div>
       </div>
+    <!--  This sidebar collapses under the main component below breakpoint  -->
     <div id="sidebar">
       <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
       <!-- This nested disaster generates the boxes containing further recipe info -->
@@ -85,6 +86,7 @@
     </div>
   </div>
 
+<!-- Displays spinner while loading -->
 </ion-content>
 <ng-template #loading>
   <ion-spinner />

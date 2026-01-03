@@ -20,6 +20,7 @@ import {NgForOf} from "@angular/common";
 })
 export class FavouritesComponent  implements OnInit {
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private favs: FavouritesService, private recipeLookup: RecipeLookup) {}
   favouritesList: any;
   favouritesRecipeInfo: any;
@@ -30,6 +31,7 @@ export class FavouritesComponent  implements OnInit {
     this.fetchFavourites()
   }
 
+  // Looks up the list of favourites and then searches for their recipe information
   async fetchFavourites() {
     this.favouritesList = await this.favs.getFavouritesList();
     const result = await this.recipeLookup.favouritesSearch(this.favouritesList);

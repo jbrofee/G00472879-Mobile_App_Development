@@ -25,7 +25,7 @@ export class HomePage {
       .map(item => item.trim())
       .filter(item => item.length > 0);
 
-    // Navigate to results page with ingredients as query params
+    // Navigate to results page with ingredients as state
     this.navCtrl.navigateForward(['/results'], {
       state: { ingredients: ingredientList }
     });

@@ -7,6 +7,9 @@ import { Storage } from '@ionic/storage-angular';
 export class Units {
   private _storage: Storage | null = null;
 
+  // I have no idea why but the storage randomly takes ages to initialise
+  // so I've added checks to make sure it's ready before each use
+  // Could be avoided by using a better framework
   constructor(private storage: Storage) {
     this.init();
   }

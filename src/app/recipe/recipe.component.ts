@@ -18,6 +18,7 @@ import {FavouritesService} from "../services/favourites-service";
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss'],
+  // This is ugly and I hate it
   imports: [
     IonContent,
     NgIf,
@@ -46,6 +47,7 @@ export class RecipeComponent  implements OnInit {
     private favouriteService: FavouritesService
   ) { }
 
+  // Initialising variables to be used throughout the component
   recipeId: string = "";
   recipeDetails: any;
   unitPreference: any;
@@ -54,16 +56,22 @@ export class RecipeComponent  implements OnInit {
 
   ngOnInit() {}
 
+  // Fetch recipe details when the view is about to enter
   async ionViewWillEnter() {
+    // Page shows a spinner while loading is true
     this.isLoading = true;
+    // Grabs ID from URL
     this.recipeId = this.route.snapshot.paramMap.get('id') || "";
+    // Checks if favourited to inform the favourite button state
     this.isFavourited = await this.favouriteService.isFavorited(this.recipeId);
+    // Fetches recipe details
     await this.fetchRecipeDetails(this.recipeId);
+    // Fetches unit preferences which is used for ingredient display
     this.fetchUnitPreference()
-    this.isFavourited = await this.favouriteService.isFavorited(this.recipeId)
     this.isLoading = false;
   }
 
+  // Check recipeSearch service to see how recipe details are fetched
   async fetchRecipeDetails(id: string) {
     const response = await this.httpService.recipeSearch(id);
     this.recipeDetails = response?.data;
@@ -73,7 +81,8 @@ export class RecipeComponent  implements OnInit {
     this.unitPreference = await this.unitService.getUnitPreferences();
   }
 
-  async toggleFavourite(): Promise<void> {
+  // Function that is called when the button is pressed
+  async toggleFavourite() {
     const id = this.recipeDetails.id;
     if (this.isFavourited) {
       await this.favouriteService.removeFavourite(id);

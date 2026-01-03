@@ -7,6 +7,7 @@ import {Capacitor, CapacitorHttp, HttpOptions} from "@capacitor/core";
 export class IngredientsSearch {
   constructor() {}
 
+  // Takes in ingredients and appends them to URL for querying
   async searchFunction(ingredients: string[]){
     const options: HttpOptions = {
       url: 'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=' + ingredients.join(','),

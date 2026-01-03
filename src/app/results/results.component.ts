@@ -35,11 +35,13 @@ export class ResultsComponent  implements OnInit {
     // Alternative: check history state if navigation is null
     const state = history.state?.ingredients || ingredients;
 
+    // Fetch recipes only if state is valid
     if (state.length > 0) {
       this.fetchRecipes(state);
     }
   }
 
+  // Grabs the list of recipes based on the ingredients provided
   async fetchRecipes(ingredients: string[]) {
     const response = await this.httpService.searchFunction(ingredients);
     this.resultsList = response?.data.results;

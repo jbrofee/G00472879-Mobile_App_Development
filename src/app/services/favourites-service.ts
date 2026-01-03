@@ -18,6 +18,8 @@ export class FavouritesService {
   // Keeping it simple; favourites are just an array of recipe IDs
   // There was a lot of weirdness with IDs not being detected by isFavourite
   // So they are normalised to strings each time
+  // Similar to units service the Ionic storage system is bad and doesn't init
+  // quick enough sometimes
   async addFavourite(recipeId: string | number): Promise<void> {
     if (!this._storage) {
       await this.init();
@@ -30,6 +32,7 @@ export class FavouritesService {
     }
   }
 
+  // Gets the current list of favourites and filters out the one to be removed
   async removeFavourite(recipeId: string | number): Promise<void> {
     if (!this._storage) {
       await this.init();
@@ -47,6 +50,7 @@ export class FavouritesService {
     return (await this._storage!.get('favourites')) || [];
   }
 
+  // Returns boolean indicating if the given recipe ID is in the favourites list
   async isFavorited(recipeId: string | number): Promise<boolean> {
     if (!this._storage) {
       await this.init();
