@@ -14,7 +14,7 @@ import {Units} from "../services/units";
 import {NgFor, NgIf} from "@angular/common";
 import {FavouritesService} from "../services/favourites-service";
 import {addIcons} from "ionicons";
-import {heart, heartOutline} from "ionicons/icons";
+import {checkmarkCircleOutline, closeCircleOutline, heart, heartOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-recipe',
@@ -54,7 +54,7 @@ export class RecipeComponent  implements OnInit {
     private unitService: Units,
     private favouriteService: FavouritesService
   ) { addIcons ({
-      heart, heartOutline
+      heart, heartOutline, checkmarkCircleOutline, closeCircleOutline
     }
     )}
 

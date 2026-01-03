@@ -106,6 +106,30 @@
             </ion-card>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Vegetarian?
+              </ion-card-header>
+              <ion-card-content>
+                <ion-icon slot="start" [name]="recipeDetails.vegetarian ? 'checkmark-circle-outline' : 'close-circle-outline'"></ion-icon>
+                {{ recipeDetails.vegetarian ? 'Yes' : 'No' }}
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Vegan?
+              </ion-card-header>
+              <ion-card-content>
+                <ion-icon slot="start" [name]="recipeDetails.vegetarian ? 'checkmark-circle-outline' : 'close-circle-outline'"></ion-icon>
+                {{ recipeDetails.vegan ? 'Yes' : 'No' }}
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
       </ion-grid>
     </div>
   </div>
