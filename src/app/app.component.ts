@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  IonApp, IonButton,
+  IonApp,
   IonButtons,
   IonContent,
   IonHeader, IonIcon,
@@ -14,7 +14,7 @@ import {cogOutline, heartCircleOutline} from "ionicons/icons";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonHeader, IonTitle, IonToolbar, IonContent, IonButtons, IonButton, IonIcon],
+  imports: [IonApp, IonRouterOutlet, IonHeader, IonTitle, IonToolbar, IonContent, IonButtons, IonIcon],
 })
 export class AppComponent {
   constructor() {

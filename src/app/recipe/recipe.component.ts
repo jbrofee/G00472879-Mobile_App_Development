@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
 import {
@@ -78,7 +78,7 @@ export class RecipeComponent  implements OnInit {
     // Fetches recipe details
     await this.fetchRecipeDetails(this.recipeId);
     // Fetches unit preferences which is used for ingredient display
-    this.fetchUnitPreference()
+    await this.fetchUnitPreference()
     this.isLoading = false;
   }
 
