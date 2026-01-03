@@ -7,17 +7,45 @@
 #container > *:not(#sidebar) {
   flex: 1;
 }
+#details {
+  display: flex;
+  gap: 1rem;
+}
+
+#details > div {
+  flex: 1;
+}
+
+h3 {
+  text-align: center;
+}
 
 #sidebar {
   max-width: 400px;
 }
 
 @media (max-width: 768px) {
+  h1 {
+    text-align: center;
+  }
+
   #container {
     flex-direction: column;
+    width: 100%;
   }
 
   #sidebar {
     max-width: 100%;
+  }
+
+  #details {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  #details {
+    flex-direction: column;
   }
 }

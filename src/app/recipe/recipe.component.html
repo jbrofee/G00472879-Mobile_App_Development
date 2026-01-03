@@ -1,33 +1,33 @@
 <!-- isLoading tracks whether or not the response has been received -->
 <ion-content *ngIf="!isLoading; else loading">
+  <h1 class="ion-padding">{{ recipeDetails.title }}</h1>
   <div id="container" class="ion-padding">
-
-    <div>
-      <h1>{{ recipeDetails.title }}</h1>
-
-      <h3>Ingredients</h3>
-      <ion-list [inset]="true">
-        <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients">
-          <ion-label>
-            <!-- Shorthand check changes unit amount depending on user preference -->
-            {{ unitPreference === "Metric" ? ingredient.measures.metric.amount : ingredient.measures.us.amount }}
-            {{ unitPreference === 'Metric' ? ingredient.measures.metric.unitShort : ingredient.measures.us.unitShort }} -
-            {{ ingredient.name }}
-          </ion-label>
-        </ion-item>
-      </ion-list>
-
-      <h3>Instructions</h3>
-      <ion-accordion-group expand="inset">
-        <ion-accordion *ngFor="let recipeStep of recipeDetails.analyzedInstructions[0].steps">
-          <ion-item slot="header">
-            <ion-label>Step {{ recipeStep.number }}</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">{{ recipeStep.step }}</div>
-        </ion-accordion>
-      </ion-accordion-group>
-
-    </div>
+      <div id="details">
+        <div id="ingredients">
+          <h3>Ingredients</h3>
+          <ion-list [inset]="true">
+            <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients">
+              <ion-label>
+                <!-- Shorthand check changes unit amount depending on user preference -->
+                {{ unitPreference === "Metric" ? ingredient.measures.metric.amount : ingredient.measures.us.amount }}
+                {{ unitPreference === 'Metric' ? ingredient.measures.metric.unitShort : ingredient.measures.us.unitShort }} -
+                {{ ingredient.name }}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div id="instructions">
+          <h3>Instructions</h3>
+          <ion-accordion-group expand="inset">
+            <ion-accordion *ngFor="let recipeStep of recipeDetails.analyzedInstructions[0].steps">
+              <ion-item slot="header">
+                <ion-label>Step {{ recipeStep.number }}</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">{{ recipeStep.step }}</div>
+            </ion-accordion>
+          </ion-accordion-group>
+        </div>
+      </div>
     <div id="sidebar">
       <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
       <ion-grid>
