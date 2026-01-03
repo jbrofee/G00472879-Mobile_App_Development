@@ -30,6 +30,7 @@
       </div>
     <div id="sidebar">
       <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
+      <!-- This nested disaster generates the boxes containing further recipe info -->
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -49,6 +50,28 @@
               </ion-card-header>
               <ion-card-content>
                 {{ recipeDetails.cookingMinutes }} minutes
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Servings:
+              </ion-card-header>
+              <ion-card-content>
+                {{ recipeDetails.servings }}
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Link to original recipe
+              </ion-card-header>
+              <ion-card-content>
+                <a [href]="recipeDetails.sourceUrl" target="_blank" rel="noopener">View Recipe</a>
               </ion-card-content>
             </ion-card>
           </ion-col>
