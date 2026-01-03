@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
 import {
   IonAccordion,
-  IonAccordionGroup, IonButton, IonCard, IonCardContent, IonCardHeader, IonCol,
-  IonContent, IonGrid,
+  IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCol,
+  IonContent, IonGrid, IonHeader,
   IonItem,
   IonLabel,
-  IonList, IonRow,
-  IonSpinner
+  IonList, IonModal, IonRow,
+  IonSpinner, IonTitle, IonToolbar
 } from "@ionic/angular/standalone";
 import {Units} from "../services/units";
 import {NgFor, NgIf} from "@angular/common";
@@ -35,7 +35,12 @@ import {FavouritesService} from "../services/favourites-service";
     IonCard,
     IonCardHeader,
     IonCardContent,
-    IonButton
+    IonButton,
+    IonModal,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons
   ]
 })
 export class RecipeComponent  implements OnInit {
@@ -75,6 +80,7 @@ export class RecipeComponent  implements OnInit {
   async fetchRecipeDetails(id: string) {
     const response = await this.httpService.recipeSearch(id);
     this.recipeDetails = response?.data;
+    console.log(this.recipeDetails);
   }
 
   async fetchUnitPreference() {

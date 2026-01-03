@@ -32,6 +32,15 @@ ion-grid {
   align-self: stretch;
 }
 
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100%;
+}
+
 @media (max-width: 768px) {
   h1 {
     text-align: center;

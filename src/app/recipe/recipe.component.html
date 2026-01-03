@@ -13,6 +13,29 @@
                 {{ unitPreference === 'Metric' ? ingredient.measures.metric.unitShort : ingredient.measures.us.unitShort }} -
                 {{ ingredient.name }}
               </ion-label>
+              <ion-button id="open-ingredient-{{ingredient.name}}" fill="clear">
+                More info
+              </ion-button>
+              <!--  This mess is a modal for each ingredient with further info  -->
+              <ion-modal #ingredientModal trigger="open-ingredient-{{ingredient.name}}">
+                <ng-template>
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-title>{{ ingredient.name }} Details</ion-title>
+                      <ion-buttons slot="end">
+                        <ion-button (click)="ingredientModal.dismiss()">Close</ion-button>
+                      </ion-buttons>
+                    </ion-toolbar>
+                  </ion-header>
+                  <ion-content class="ion-padding" id="modal-content">
+                    <img [src]="`https://img.spoonacular.com/ingredients_250x250/` + ingredient.image" />
+                    <p>Aisle: {{ ingredient.aisle }}</p>
+                    <p>Original description from recipe author: {{ingredient.original}}</p>
+                    <p>Amount needed: {{ unitPreference === "Metric" ? ingredient.measures.metric.amount : ingredient.measures.us.amount }}
+                      {{ unitPreference === 'Metric' ? ingredient.measures.metric.unitShort : ingredient.measures.us.unitShort }} </p>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
             </ion-item>
           </ion-list>
         </div>
