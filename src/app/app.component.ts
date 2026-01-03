@@ -3,17 +3,24 @@ import {
   IonApp, IonButton,
   IonButtons,
   IonContent,
-  IonHeader,
+  IonHeader, IonIcon,
   IonRouterOutlet,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
+import {addIcons} from "ionicons";
+import {cogOutline, heartCircleOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonHeader, IonTitle, IonToolbar, IonContent, IonButtons, IonButton],
+  imports: [IonApp, IonRouterOutlet, IonHeader, IonTitle, IonToolbar, IonContent, IonButtons, IonButton, IonIcon],
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+    addIcons({
+      heartCircleOutline,
+      cogOutline
+    })
+  }
 }

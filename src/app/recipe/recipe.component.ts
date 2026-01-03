@@ -4,7 +4,7 @@ import { RecipeLookup } from '../services/recipe-lookup';
 import {
   IonAccordion,
   IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCol,
-  IonContent, IonGrid, IonHeader,
+  IonContent, IonGrid, IonHeader, IonIcon,
   IonItem,
   IonLabel,
   IonList, IonModal, IonRow,
@@ -13,6 +13,8 @@ import {
 import {Units} from "../services/units";
 import {NgFor, NgIf} from "@angular/common";
 import {FavouritesService} from "../services/favourites-service";
+import {addIcons} from "ionicons";
+import {heart, heartOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-recipe',
@@ -40,7 +42,8 @@ import {FavouritesService} from "../services/favourites-service";
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonButtons
+    IonButtons,
+    IonIcon
   ]
 })
 export class RecipeComponent  implements OnInit {
@@ -50,7 +53,10 @@ export class RecipeComponent  implements OnInit {
     private httpService: RecipeLookup,
     private unitService: Units,
     private favouriteService: FavouritesService
-  ) { }
+  ) { addIcons ({
+      heart, heartOutline
+    }
+    )}
 
   // Initialising variables to be used throughout the component
   recipeId: string = "";

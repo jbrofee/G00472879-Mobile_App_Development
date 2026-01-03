@@ -28,7 +28,7 @@
                     </ion-toolbar>
                   </ion-header>
                   <ion-content class="ion-padding" id="modal-content">
-                    <img [src]="`https://img.spoonacular.com/ingredients_250x250/` + ingredient.image" />
+                    <img alt="Ingredient image" [src]="`https://img.spoonacular.com/ingredients_250x250/` + ingredient.image" />
                     <p>Aisle: {{ ingredient.aisle }}</p>
                     <p>Original description from recipe author: {{ingredient.original}}</p>
                     <p>Amount needed: {{ unitPreference === "Metric" ? ingredient.measures.metric.amount : ingredient.measures.us.amount }}
@@ -56,8 +56,9 @@
       <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
       <!-- This nested disaster generates the boxes containing further recipe info -->
       <ion-button
-        [fill]="isFavourited ? 'solid' : 'clear'"
+        [fill]="isFavourited ? 'solid' : 'outline'"
         (click)="toggleFavourite()">
+        <ion-icon slot="start" [name]="isFavourited ? 'heart' : 'heart-outline'"></ion-icon>
         {{ isFavourited ? 'Remove from favourites' : 'Add to favourites' }}
       </ion-button>
       <ion-grid>
