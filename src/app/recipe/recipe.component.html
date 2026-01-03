@@ -1,10 +1,29 @@
-<ion-content>
-  <!-- isLoading tracks whether or not the response has been received -->
-  <div *ngIf="!isLoading; else loading">
-    <h1>{{ recipeDetails.title }}</h1>
+<!-- isLoading tracks whether or not the response has been received -->
+<ion-content *ngIf="!isLoading; else loading">
+  <div id="container">
+
+    <div>
+      <h1>{{ recipeDetails.title }}</h1>
+      <p>{{ unitPreference }}</p>
+      <h3>Ingredients</h3>
+
+      <h3>Instructions</h3>
+      <ion-accordion-group>
+        <ion-accordion *ngFor="let recipeStep of recipeDetails.analyzedInstructions[0].steps">
+          <ion-item slot="header">
+            <ion-label>Step {{ recipeStep.number }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">{{ recipeStep.step }}</div>
+        </ion-accordion>
+      </ion-accordion-group>
+
+    </div>
+    <div>
+      <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
+    </div>
   </div>
-  <ng-template #loading>
-    <p>Loading recipe...</p>
-  </ng-template>
-  <p>{{ unitPreference }}</p>
+
 </ion-content>
+<ng-template #loading>
+  <ion-spinner />
+</ng-template>

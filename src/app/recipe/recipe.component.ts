@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
-import {IonContent} from "@ionic/angular/standalone";
+import {IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonSpinner} from "@ionic/angular/standalone";
 import {Units} from "../services/units";
-import {NgIf} from "@angular/common";
+import {NgFor, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-recipe',
@@ -11,7 +11,13 @@ import {NgIf} from "@angular/common";
   styleUrls: ['./recipe.component.scss'],
   imports: [
     IonContent,
-    NgIf
+    NgIf,
+    IonSpinner,
+    IonAccordion,
+    IonAccordionGroup,
+    NgFor,
+    IonItem,
+    IonLabel
   ]
 })
 export class RecipeComponent  implements OnInit {
@@ -40,7 +46,7 @@ export class RecipeComponent  implements OnInit {
     const response = await this.httpService.recipeSearch(id);
     this.recipeDetails = response?.data;
     this.isLoading = false;
-    console.log(this.recipeDetails.title);
+    console.log(this.recipeDetails);
   }
 
   async fetchUnitPreference() {

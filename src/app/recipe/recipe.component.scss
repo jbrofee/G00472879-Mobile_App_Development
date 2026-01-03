@@ -1,0 +1,15 @@
+#container {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+#container > * {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+  }
+}
