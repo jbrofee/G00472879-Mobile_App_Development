@@ -27,6 +27,11 @@ h3 {
   align-items: center;
 }
 
+ion-grid {
+  width: 100%;
+  align-self: stretch;
+}
+
 @media (max-width: 768px) {
   h1 {
     text-align: center;
