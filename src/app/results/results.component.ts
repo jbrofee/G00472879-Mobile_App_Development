@@ -3,13 +3,18 @@ import {Router} from "@angular/router";
 import {IngredientsSearch} from "../services/ingredients-search";
 import {HttpResponse} from "@capacitor/core";
 import {NgForOf} from "@angular/common";
+import {IonCard, IonCardHeader, IonCardTitle, IonContent} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
   imports: [
-    NgForOf
+    NgForOf,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonContent
   ]
 })
 export class ResultsComponent  implements OnInit {
