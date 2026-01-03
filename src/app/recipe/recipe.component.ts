@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
 import {
   IonAccordion,
-  IonAccordionGroup,
-  IonContent,
+  IonAccordionGroup, IonCard, IonCardContent, IonCardHeader, IonCol,
+  IonContent, IonGrid,
   IonItem,
   IonLabel,
-  IonList,
+  IonList, IonRow,
   IonSpinner
 } from "@ionic/angular/standalone";
 import {Units} from "../services/units";
@@ -26,7 +26,13 @@ import {NgFor, NgIf} from "@angular/common";
     NgFor,
     IonItem,
     IonLabel,
-    IonList
+    IonList,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardHeader,
+    IonCardContent
   ]
 })
 export class RecipeComponent  implements OnInit {

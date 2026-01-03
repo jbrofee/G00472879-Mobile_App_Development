@@ -4,10 +4,9 @@
 
     <div>
       <h1>{{ recipeDetails.title }}</h1>
-      <p>{{ unitPreference }}</p>
 
       <h3>Ingredients</h3>
-      <ion-list>
+      <ion-list [inset]="true">
         <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients">
           <ion-label>
             <!-- Shorthand check changes unit amount depending on user preference -->
@@ -19,7 +18,7 @@
       </ion-list>
 
       <h3>Instructions</h3>
-      <ion-accordion-group>
+      <ion-accordion-group expand="inset">
         <ion-accordion *ngFor="let recipeStep of recipeDetails.analyzedInstructions[0].steps">
           <ion-item slot="header">
             <ion-label>Step {{ recipeStep.number }}</ion-label>
@@ -29,8 +28,32 @@
       </ion-accordion-group>
 
     </div>
-    <div>
+    <div id="sidebar">
       <img [src]="recipeDetails.image" alt="Image of {{ recipeDetails.title }}" />
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Preparation time:
+              </ion-card-header>
+              <ion-card-content>
+                {{ recipeDetails.preparationMinutes }} minutes
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                Cooking time:
+              </ion-card-header>
+              <ion-card-content>
+                {{ recipeDetails.cookingMinutes }} minutes
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
   </div>
 
