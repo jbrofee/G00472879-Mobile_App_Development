@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeLookup } from '../services/recipe-lookup';
 import {
   IonAccordion,
-  IonAccordionGroup, IonCard, IonCardContent, IonCardHeader, IonCol,
+  IonAccordionGroup, IonButton, IonCard, IonCardContent, IonCardHeader, IonCol,
   IonContent, IonGrid,
   IonItem,
   IonLabel,
@@ -12,6 +12,7 @@ import {
 } from "@ionic/angular/standalone";
 import {Units} from "../services/units";
 import {NgFor, NgIf} from "@angular/common";
+import {FavouritesService} from "../services/favourites-service";
 
 @Component({
   selector: 'app-recipe',
@@ -32,7 +33,8 @@ import {NgFor, NgIf} from "@angular/common";
     IonCol,
     IonCard,
     IonCardHeader,
-    IonCardContent
+    IonCardContent,
+    IonButton
   ]
 })
 export class RecipeComponent  implements OnInit {
@@ -40,20 +42,24 @@ export class RecipeComponent  implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private httpService: RecipeLookup,
-    private unitService: Units
+    private unitService: Units,
+    private favouriteService: FavouritesService
   ) { }
 
   recipeId: string = "";
   recipeDetails: any;
   unitPreference: any;
   isLoading = true;
+  isFavourited = false;
 
   ngOnInit() {}
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     this.recipeId = this.route.snapshot.paramMap.get('id') || "";
+    this.isFavourited = await this.favouriteService.isFavorited(this.recipeId);
     this.fetchRecipeDetails(this.recipeId);
     this.fetchUnitPreference()
+    this.isFavourited = await this.favouriteService.isFavorited(this.recipeId)
   }
 
   async fetchRecipeDetails(id: string) {
@@ -61,11 +67,23 @@ export class RecipeComponent  implements OnInit {
     const response = await this.httpService.recipeSearch(id);
     this.recipeDetails = response?.data;
     this.isLoading = false;
+    console.log(id)
+    console.log(this.isFavourited)
     console.log(this.recipeDetails);
   }
 
   async fetchUnitPreference() {
     this.unitPreference = await this.unitService.getUnitPreferences();
+  }
+
+  async toggleFavourite(): Promise<void> {
+    const id = this.recipeDetails.id;
+    if (this.isFavourited) {
+      await this.favouriteService.removeFavourite(id);
+    } else {
+      await this.favouriteService.addFavourite(id);
+    }
+    this.isFavourited = !this.isFavourited;
   }
 
 }

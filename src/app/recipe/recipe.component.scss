@@ -22,6 +22,9 @@ h3 {
 
 #sidebar {
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
