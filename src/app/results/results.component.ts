@@ -39,7 +39,7 @@ export class ResultsComponent  implements OnInit {
 
   async fetchRecipes(ingredients: string[]) {
     const response = await this.httpService.searchFunction(ingredients);
-    this.resultsList = response?.data;
-    console.log(this.resultsList);
+    this.resultsList = response?.data.results;
+    console.log(this.resultsList.results);
   }
 }

@@ -9,7 +9,7 @@ export class IngredientsSearch {
 
   async searchFunction(ingredients: string[]){
     const options: HttpOptions = {
-      url: 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=' + ingredients.join(','),
+      url: 'https://api.spoonacular.com/recipes/complexSearch?includeIngredients=' + ingredients.join(','),
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': '70759a4f7911402abcc53d3c51d3b759',
