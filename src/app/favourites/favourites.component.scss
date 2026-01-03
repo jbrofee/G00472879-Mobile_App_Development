@@ -1,0 +1,12 @@
+#results-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px;
+  padding-bottom: 32px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 16px;
+  text-align: center;
+}

@@ -56,11 +56,4 @@ export class FavouritesService {
     return favourites.includes(id);
   }
 
-  async fetchFavouriteRecipeInfo(favourites: string[]) {
-    if (favourites.length === 0) {
-      return [];
-    }
-    const response = await this.recipeLookup.favouritesSearch(favourites);
-    return response?.data || [];
-  }
 }
